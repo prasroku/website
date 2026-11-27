@@ -80,3 +80,17 @@ flowchart TD
 - **Local embeddings beat a free API tier.** I started with Gemini's embedding API, hit the rate limit within a handful of requests, and switched to sentence-transformers. No key and no waiting.
 - **Tell the model to stick to the context.** Without that instruction it mixes in what it already "knows", which quietly defeats the point of RAG.
 - **Searching is free, answering costs money.** Retrieval runs locally, and generating an answer is a separate button so only that step spends an API call.
+
+---
+
+## Outbound Traffic Monitor
+
+<p align="left">
+  <a href="https://github.com/prasroku/outbound-traffic-monitor">
+    <img src="https://img.shields.io/badge/View_on_GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="View on GitHub">
+  </a>
+</p>
+
+A small Python tool that watches which processes on my machine connect to the internet, looks up the country of each remote IP, and logs it all to SQLite. It flags traffic that looks unusual, either through an IsolationForest anomaly model or when a country's share of traffic jumps well above its normal daily level.
+
+**Stack:** Python, psutil, scikit-learn, SQLite, matplotlib
