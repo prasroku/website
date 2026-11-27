@@ -18,11 +18,60 @@ A retrieval-augmented generation pipeline I built from scratch to learn what's r
 
 ### How it works
 
+```mermaid
+flowchart LR
+    subgraph Ingest["Ingest (run once)"]
+        direction TB
+        PDF[PDF] --> Extract[Extract text]
+        Extract --> Chunk[Split into chunks]
+        Chunk --> Embed[Embed locally<br/>all-MiniLM-L6-v2]
+    end
+
+    subgraph Supabase["Supabase"]
+        direction TB
+        Storage[(Storage<br/>original PDF)]
+        DB[(Postgres + pgvector<br/>chunks + embeddings)]
+    end
+
+    subgraph Query["Ask a question"]
+        direction TB
+        Q[Question] --> Hybrid[Hybrid search<br/>keyword + semantic, RRF]
+        Hybrid --> Rerank[Rerank top 20<br/>cross-encoder]
+        Rerank --> Gemini[Gemini answers<br/>from the top 5 chunks]
+    end
+
+    PDF -.-> Storage
+    Embed --> DB
+    DB --> Hybrid
+    Gemini --> UI[Streamlit app]
+```
+
 1. **Ingest:** extract text from the PDF, chunk it, and embed each chunk locally with `all-MiniLM-L6-v2` (384 dimensions).
 2. **Hybrid search:** run a keyword search (Postgres full-text) and a semantic search (pgvector cosine) side by side, then merge the two ranked lists with Reciprocal Rank Fusion.
 3. **Rerank (optional):** pull 20 candidates and rescore each question/chunk pair with a cross-encoder, keeping the best 5.
 4. **Self-correcting retrieval:** a LangGraph state machine checks the results. If nothing comes back with enough confidence, Gemini rewrites the question and it tries once more.
 5. **Answer:** Gemini answers the question using only the retrieved chunks.
+
+### The LangGraph retry loop
+
+Instead of returning nothing when the first search goes badly, the search runs as a small state machine. A cached answer skips everything, and a low-confidence result gets one rewrite and a second try.
+
+```mermaid
+flowchart TD
+    Start([Start]) --> Embed[Embed question]
+    Embed --> Cache{In semantic cache?<br/>similarity ≥ 0.92}
+    Cache -- yes --> Done([Return cached results])
+    Cache -- no --> Retrieve[Hybrid search]
+    Retrieve --> RerankOn{Reranking on?}
+    RerankOn -- yes --> Rerank[Cross-encoder rerank]
+    RerankOn -- no --> Evaluate
+    Rerank --> Evaluate{Any chunk with<br/>similarity ≥ 0.3?}
+    Evaluate -- yes --> Store[Save to cache]
+    Evaluate -- "no, retry left" --> Rewrite[Gemini rewrites<br/>the question]
+    Evaluate -- "no, out of retries" --> Store
+    Rewrite --> Embed
+    Store --> End([Return results])
+```
 
 ### Things I learned along the way
 
