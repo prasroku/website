@@ -59,6 +59,14 @@ Right now my main focus is making LLM-based agents actually practical in a produ
 
 ---
 
+## Side Projects
+
+- **[Hybrid RAG with LangGraph](./projects.md#hybrid-rag-with-langgraph)**: a RAG pipeline built from scratch with Supabase pgvector, hybrid search, a LangGraph retry loop and Gemini answers. [Code on GitHub](https://github.com/prasroku/hybrid-rag-langgraph)
+
+**[See all projects →](./projects.md)**
+
+---
+
 ## Get in Touch
 
 I'm usually happy to talk about AI agents, test automation, cybersecurity, or networking. Drop me a line:
