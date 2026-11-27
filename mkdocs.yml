@@ -15,6 +15,7 @@ theme:
 nav:
   - Home: index.md
   - CV: cv.md
+  - Projects: projects.md
   - Contact: contact.md
   - Blog:
     - blog/index.md
@@ -36,7 +37,11 @@ plugins:
   - search
 
 markdown_extensions:
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight
   - pymdownx.inlinehilite
 
