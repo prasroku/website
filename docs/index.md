@@ -10,7 +10,7 @@
 </div>
 
 <p align="left">
-  <a href="https://github.com/prasro">
+  <a href="https://github.com/prasroku">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
   <a href="https://linkedin.com/in/rohith-kumar-prasanna-kumar">
@@ -64,4 +64,4 @@ Right now my main focus is making LLM-based agents actually practical in a produ
 I'm usually happy to talk about AI agents, test automation, cybersecurity, or networking. Drop me a line:
 
 - [Contact page](./contact.md)
-- [GitHub](https://github.com/prasro) | [LinkedIn](https://linkedin.com/in/rohith-kumar-prasanna-kumar)
+- [GitHub](https://github.com/prasroku) | [LinkedIn](https://linkedin.com/in/rohith-kumar-prasanna-kumar)

@@ -1,7 +1,7 @@
 # Contact Me
 
 <p align="left">
-  <a href="https://github.com/prasro">
+  <a href="https://github.com/prasroku">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
   <a href="https://linkedin.com/in/rohith-kumar-prasanna-kumar">
@@ -18,7 +18,7 @@
 | 📧 **Email** | [rohith@rohithkumar.dev](mailto:rohith@rohithkumar.dev) |
 | 📍 **Location** | Gdańsk, Poland |
 | 💼 **LinkedIn** | [linkedin.com/in/rohith-kumar-prasanna-kumar](https://linkedin.com/in/rohith-kumar-prasanna-kumar) |
-| 🐙 **GitHub** | [github.com/prasro](https://github.com/prasro) |
+| 🐙 **GitHub** | [github.com/prasroku](https://github.com/prasroku) |
 
 ---
 
