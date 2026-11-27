@@ -1,0 +1,30 @@
+name: Site health
+
+# Checks that every page in the live site's sitemap returns HTTP 200.
+# A failed scheduled run emails the repo owner, so this doubles as an uptime alert.
+on:
+  schedule:
+    - cron: "17 */6 * * *" # every 6 hours
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      # Give Cloudflare time to finish deploying the commit that triggered this run.
+      - name: Wait for deploy
+        if: github.event_name == 'push'
+        run: sleep 120
+
+      - name: Check every page returns 200
+        run: |
+          site=$(sed -nE 's/^site_url:[[:space:]]*//p' mkdocs.yml)
+          bash scripts/check_site.sh "$site" "https://www.${site#https://}/"
