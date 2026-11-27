@@ -61,10 +61,11 @@ Right now my main focus is making LLM-based agents actually practical in a produ
 
 ## Side Projects
 
-- **[Hybrid RAG with LangGraph](./projects.md#hybrid-rag-with-langgraph)**: a RAG pipeline built from scratch with Supabase pgvector, hybrid search, a LangGraph retry loop and Gemini answers. [Code on GitHub](https://github.com/prasroku/hybrid-rag-langgraph)
-- **[Outbound Traffic Monitor](./projects.md#outbound-traffic-monitor)**: logs which processes connect to which countries and flags unusual traffic with an anomaly model and per-country baselines. [Code on GitHub](https://github.com/prasroku/outbound-traffic-monitor)
+- **[Hybrid RAG with LangGraph](./projects/hybrid-rag-langgraph.md)**: a RAG pipeline built from scratch with Supabase pgvector, hybrid search, a LangGraph retry loop and Gemini answers. [Code on GitHub](https://github.com/prasroku/hybrid-rag-langgraph)
+- **[Outbound Traffic Monitor](./projects/outbound-traffic-monitor.md)**: logs which processes connect to which countries and flags unusual traffic with an anomaly model and per-country baselines. [Code on GitHub](https://github.com/prasroku/outbound-traffic-monitor)
+- **[Holistic Selfie with Gestures](./projects/holistic-selfie-gesture.md)**: draws MediaPipe's face and hand landmarks live from a webcam, and takes a selfie when you hold up an open palm. [Code on GitHub](https://github.com/prasroku/holistic-selfie-gesture)
 
-**[See all projects →](./projects.md)**
+**[See all projects →](./projects/index.md)**
 
 ---
 

@@ -16,7 +16,11 @@ theme:
 nav:
   - Home: index.md
   - CV: cv.md
-  - Projects: projects.md
+  - Projects:
+    - projects/index.md
+    - Hybrid RAG with LangGraph: projects/hybrid-rag-langgraph.md
+    - Outbound Traffic Monitor: projects/outbound-traffic-monitor.md
+    - Holistic Selfie with Gestures: projects/holistic-selfie-gesture.md
   - Contact: contact.md
   - Blog:
     - blog/index.md
